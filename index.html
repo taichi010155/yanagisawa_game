@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>やなぎさわシャッフル</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #f0f0f0;
+            font-family: sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+        }
+
+        #result {
+            font-size: 64px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            height: 80px;
+            color: #333;
+            
+            /* --- ここを修正しました --- */
+            display: flex;          /* flexコンテナにする */
+            justify-content: center; /* 中身を水平方向の中央に */
+            align-items: center;     /* 中身を垂直方向の中央に */
+            /* --- 修正ここまで --- */
+        }
+
+        button {
+            font-size: 24px;
+            padding: 15px 40px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="result">?????</div>
+        
+        <button onclick="shuffleText()">実行</button>
+    </div>
+
+    <script>
+        function shuffleText() {
+            const original = "やなぎさわ";
+            let charArray = original.split('');
+
+            for (let i = charArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [charArray[i], charArray[j]] = [charArray[j], charArray[i]];
+            }
+
+            const resultText = charArray.join('');
+            document.getElementById('result').innerText = resultText;
+        }
+    </script>
+</body>
+</html>
